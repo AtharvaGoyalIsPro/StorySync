@@ -52,6 +52,24 @@ const TiptapToolbar = ({ editor }: { editor: Editor | null }) => {
       >
         <Bold className={iconSize} />
       </Button>
+            <Button
+        variant={editor.isActive('bold') ? 'secondary' : 'ghost'}
+        size="sm"
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        disabled={!editor.can().chain().focus().toggleBold().run()}
+        title="Bold (Ctrl+B)"
+      >
+        <Bold className={iconSize} />
+      </Button>
+            <Button
+        variant={editor.isActive('bold') ? 'secondary' : 'ghost'}
+        size="sm"
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        disabled={!editor.can().chain().focus().toggleBold().run()}
+        title="Bold (Ctrl+B)"
+      >
+        <Bold className={iconSize} />
+      </Button>
       <Button
         variant={editor.isActive('italic') ? 'secondary' : 'ghost'}
         size="sm"
