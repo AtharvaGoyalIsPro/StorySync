@@ -57,10 +57,18 @@ const generateStoryPromptsFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await generateStoryPromptsPrompt(input);
-    return output!;
+    if (!output) {
+ throw new Error('Failed to generate story prompts from AI model.');
+    }
+    return output;
   }
 );
 
-export async function generateStoryPrompts(input: GenerateStoryPromptsInput): Promise<GenerateStoryPromptsOutput> {
-  return generateStoryPromptsFlow(input);
+export async function generateStoryPrompts(input: GenerateStoryPromptsInput): Promise<GenerateStoryPromptsOutput | null> {
+  try {
+ return await generateStoryPromptsFlow(input);
+  } catch (error) {
+    console.error('Error in generateStoryPrompts flow:', error);
+ return null;
+  }
 }
