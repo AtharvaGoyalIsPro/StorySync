@@ -1,5 +1,3 @@
-# Firebase Studio
+# Story Sync
 
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+Best platforms for authors to collaborate.
