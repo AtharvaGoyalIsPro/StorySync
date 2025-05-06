@@ -1,0 +1,141 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-geist-sans), sans-serif; /* Use Geist Sans as primary */
+}
+
+@layer base {
+  :root {
+    /* Light Theme Colors */
+    --background: 220 14% 96%; /* Light Gray */
+    --foreground: 240 10% 3.9%; /* Dark Gray */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 240 10% 3.9%; /* Dark Gray */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 240 10% 3.9%; /* Dark Gray */
+
+    --primary: 240 5.9% 10%; /* Default Dark for ShadCN primary */
+    --primary-foreground: 0 0% 98%; /* White */
+
+    --secondary: 200 60% 90%; /* Soft Blue #A0D2EB */
+    --secondary-foreground: 200 30% 25%; /* Darker Blue/Gray */
+
+    --muted: 220 10% 90%; /* Lighter Gray */
+    --muted-foreground: 240 5% 65%; /* Medium Gray */
+
+    --accent: 180 100% 25%; /* Teal #008080 */
+    --accent-foreground: 0 0% 98%; /* White */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 88%; /* Slightly darker gray for borders */
+    --input: 220 13% 91%; /* Slightly lighter gray for inputs */
+    --ring: 180 100% 35%; /* Teal variant for focus rings */
+
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar specific - can keep default or adjust if needed */
+    --sidebar-background: 220 14% 98%; /* Slightly off-white */
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 180 100% 25%; /* Teal */
+    --sidebar-primary-foreground: 0 0% 98%; /* White */
+    --sidebar-accent: 200 60% 92%; /* Lighter Soft Blue */
+    --sidebar-accent-foreground: 200 30% 25%; /* Darker Blue/Gray */
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 180 100% 35%; /* Teal variant */
+  }
+
+  .dark {
+     /* Dark Theme Colors - Adjusted for contrast */
+    --background: 240 10% 3.9%; /* Dark Gray */
+    --foreground: 0 0% 98%; /* White */
+
+    --card: 240 10% 6%; /* Slightly darker card */
+    --card-foreground: 0 0% 98%; /* White */
+
+    --popover: 240 10% 3.9%; /* Dark Gray */
+    --popover-foreground: 0 0% 98%; /* White */
+
+    --primary: 0 0% 98%; /* White */
+    --primary-foreground: 240 5.9% 10%; /* Dark Gray */
+
+    --secondary: 200 50% 20%; /* Darker Soft Blue */
+    --secondary-foreground: 200 60% 90%; /* Light Soft Blue */
+
+    --muted: 240 3.7% 15.9%; /* Dark Muted Gray */
+    --muted-foreground: 240 5% 65%; /* Medium Gray */
+
+    --accent: 180 100% 35%; /* Brighter Teal */
+    --accent-foreground: 0 0% 98%; /* White */
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%; /* Dark Border Gray */
+    --input: 240 3.7% 15.9%; /* Dark Input Gray */
+    --ring: 180 100% 45%; /* Brighter Teal variant for focus rings */
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Sidebar specific - dark */
+    --sidebar-background: 240 10% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 180 100% 35%; /* Brighter Teal */
+    --sidebar-primary-foreground: 0 0% 98%; /* White */
+    --sidebar-accent: 200 50% 25%; /* Darker Soft Blue */
+    --sidebar-accent-foreground: 200 60% 90%; /* Light Soft Blue */
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 180 100% 45%; /* Brighter Teal variant */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Ensure better text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Improve readability for story content specifically if needed */
+  /* This is handled by the .prose class on the EditorContent wrapper now */
+  /* .story-content {
+     @apply text-base leading-relaxed; 
+  } */
+
+  /* Tiptap Editor Styles */
+  .ProseMirror {
+    @apply min-h-[200px] p-2 focus:outline-none; /* Adjust min-height as needed */
+    /* Tailwind's prose class will handle most typography. Specific overrides can go here if needed. */
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply float-left h-0 pointer-events-none text-muted-foreground;
+  }
+  
+  /* Basic styling for Tiptap elements are largely handled by Tailwind prose.
+     The .story-content class now applies .prose.
+     Specific overrides or very custom Tiptap elements might still need rules here.
+     Example:
+     .ProseMirror h1 { @apply text-3xl font-bold my-4; } (This is now handled by .prose h1)
+  */
+}
